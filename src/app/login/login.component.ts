@@ -1,37 +1,38 @@
-import { Component } from '@angular/core';
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  private router: Router;
-  
-  private username: string;
-  private password: string;
-  private showError: Boolean = false;
-  private knownUsers = [
-    {username: 'steve', password: '12345'},
-    {username: 'dave', password: 'abcde'},
-    {username: 'pete', password: 'password'}
-  ];
+export class LoginComponent implements OnInit {
 
-  private login(){
-    
-    let user = {username: this.username, password: this.password};
+  users = [{ 'email': 'abc@com.au', 'pwd': '123' }, { 'email': 'abd@com.au', 'pwd': '123' }, { 'email': 'abe@com.au', 'pwd': '123' }];
+  email: string = 'Email Address';
+  password: string = 'password';
+  error = false;
+  hidemessage = true;
 
-    // if the user matches a known user
-    for (let knownUser of this.knownUsers){
-      if (JSON.stringify(user) === JSON.stringify(knownUser)){
-        // navigate to account page
-        this.router.navigateByUrl('/account');
-        return;
+  constructor(private router: Router, private form: FormsModule) { }
+
+  ngOnInit() {
+  }
+
+  itemClicked(){
+    var match = false;
+
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.email == this.users[i].email && this.password == this.users[i].pwd) {
+        this.router.navigateByUrl('/account/'+ this.email);
+        match = true;
       }
     }
-    // else display error message
-    this.showError = true;
-    return;
+
+    if (!match) {
+      this.error = true;
+      this.hidemessage = false;
+    }
   }
 }

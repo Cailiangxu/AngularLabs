@@ -5,22 +5,12 @@ import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {
-    path: 'account', 
-    component: AccountComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  }
-]
+  {path: 'login', component: LoginComponent },
+  {path: 'account/:email', component: AccountComponent}
+];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(routes)
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

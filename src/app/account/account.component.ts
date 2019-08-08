@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
+
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -7,17 +8,17 @@ import { Router } from "@angular/router";
 })
 export class AccountComponent implements OnInit {
   email:string ='';
-  psw: string ='';
+  // psw: string ='';
 
   ppp;
-  constructor(private router: Router) { }
+  constructor(private route:ActivatedRoute ) { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    this.ppp = this.route.paramMap.subscribe(params=>{
+      this.email = params.get('email');
+      // this.psw = params.get('password');
+    });
   }
 
-  toLogin(){
-    this.router.navigateByUrl('/login');
-    
-    
-  }
 }
