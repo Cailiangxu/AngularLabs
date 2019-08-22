@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -7,18 +7,19 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-  email:string ='';
-  // psw: string ='';
+  user: object;
 
-  ppp;
-  constructor(private route:ActivatedRoute ) { }
+  constructor(private router: Router) { }
 
-  ngOnInit() 
-  {
-    this.ppp = this.route.paramMap.subscribe(params=>{
-      this.email = params.get('email');
-      // this.psw = params.get('password');
-    });
+  ngOnInit() {
+    // get user from session storage
+    const user = sessionStorage.getItem('user');
+    // if no user, navigate to login page
+    if (!user) {
+      this.router.navigate(['/login']);
+    } else {
+      this.user = JSON.parse(user);
+    }
   }
 
 }

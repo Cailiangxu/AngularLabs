@@ -1,0 +1,21 @@
+<form id="profile-form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <h2 class="h3 mb-3 font-weight-normal">Edit profile</h2>
+  
+  <label>Username</label>
+  <input type="text" class="form-control" formControlName="username">
+
+  <label>Birthdate</label>
+  <input type="text" class="form-control" formControlName="birthdate">
+
+  <label>Age</label>
+  <input type="text" class="form-control" formControlName="age">
+
+  <label>Email</label>
+  <input type="text" class="form-control" formControlName="email">
+
+  <label>Valid</label>
+  <input type="text" class="form-control" formControlName="valid">
+  
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Edit</button>
+</form>
+  

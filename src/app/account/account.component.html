@@ -1,16 +1,11 @@
-Account Page
-<div class="row">
-        <div class="col-lg-5">
-          <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4">
-            <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg" alt="Sample image">
-            <a>
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-    
-        </div>
-        <p>this is account page</p>
-<br>
-<div class="form-group">
-    <button class="btn float-right login_btn" (click)="toLogin()">Return to login</button><br>
+<div id="account">
+  <h2>Account page</h2>
+  <div class="jumbotron">
+    <h2 class="display-4">Hello, {{ user.email }}!</h2>
+    <p class="lead">This is your account page.</p>
+    <hr>
+    <p>Username: <i>{{ user.username }}</i></p>
+    <p>Birthdate: <i>{{ user.birthdate }}</i></p>
+    <p>Age: <i>{{ user.age }}</i></p>
+  </div>
 </div>

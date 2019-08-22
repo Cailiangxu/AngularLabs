@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { AccountComponent } from './account/account.component';
-import { LoginComponent } from './login/login.component';
 
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { AccountComponent } from './account/account.component';
+import { ProfileComponent } from './profile/profile.component';
+import { LogoutComponent } from './logout/logout.component';
+
+// app routes in menu
 const routes: Routes = [
-  {path: 'login', component: LoginComponent },
-  {path: 'account/:email', component: AccountComponent}
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'account', component: AccountComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'logout', component: LogoutComponent },
 ];
 
 @NgModule({
